@@ -1,4 +1,4 @@
-# Block 3 · Hooks are rules, CLAUDE.md is a request (10:45–11:20)
+# Practice 3 · Hooks are rules, CLAUDE.md is a request (10:45–11:20)
 
 The task: `next_run()` in `cronnext.py`, specified in `TASK.md`.
 `tests/` has 3 example tests. The trainer has 36 hidden ones.
