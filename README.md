@@ -20,11 +20,11 @@ Everything here is plain Python 3 (standard library only) so it runs on any lapt
 
 ## What is in here
 
-| Folder | Block | What you do |
+| Folder | Practice | What you do |
 |---|---|---|
-| `exercises/01-setup` | 1 · 09:00 | Get running, look at `/context` before you type anything |
-| `exercises/02-context` | 2 · 09:30 | Read a 4,300-row usage export, ask questions, watch the cache in the log |
-| `exercises/03-hooks` | 3 · 10:40 | Make the agent build a cron parser and stop it from weakening the tests |
+| `exercises/01-setup` | 1 · 09:35 | Get running, look at `/context` before you type anything |
+| `exercises/02-context` | 1–2 · 09:35 / 10:20 | Read a 4,300-row usage export, ask questions, watch the cache in the log |
+| `exercises/03-hooks` | 3 · 10:55 | Make the agent build a cron parser and stop it from weakening the tests |
 | `exercises/04-meter` | 4 · 11:20 | Build your own meter for your own Claude Code logs |
 | `exercises/bonus-bugfix` | spare | A small bug-fix task if you finish early |
 | `tools/cc_meter.py` | 2–4 | Our ready meter: turn-by-turn token use from your local logs |
