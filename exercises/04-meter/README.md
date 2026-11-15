@@ -1,4 +1,4 @@
-# Block 4 · Build your own meter (11:20–11:55)
+# Block 4 · Build your own meter (11:20–11:45)
 
 Every Claude Code call is logged on your own machine in `~/.claude/projects/**/*.jsonl`.
 One line per content block; assistant lines carry `message.usage`:

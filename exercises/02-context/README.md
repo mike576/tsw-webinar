@@ -1,8 +1,8 @@
-# Block 2 · Context and the cache, measured (09:30–10:30)
+# Practice 1 + 2 · Context and the cache, measured (09:35–10:35)
 
 `usage.csv` is a synthetic LLM API usage export (4,300 rows), `prices.csv` the price list.
 
-## Part A: read, extract, measure (15 min)
+## Part A: read, extract, measure (Practice 1, 09:35)
 Start a fresh session here: `cd exercises/02-context && claude`, then `/model sonnet`.
 
 1. `/context` and write down the total.
@@ -16,7 +16,7 @@ Start a fresh session here: `cd exercises/02-context && claude`, then `/model so
    (it looks at the current folder), so run it from here: `python3 ../../tools/cc_meter.py`.
    Look at `cr` (cache read) and `in` (fresh input) turn by turn.
 
-## Part B: the experiment (10 min)
+## Part B: the experiment (Practice 2, 10:20)
 Half the room (odd seat number in Zoom) runs **`/compact`**, the other half presses **Esc Esc**
 and rewinds to before the last question. Then everyone asks:
 "Which model had the highest output-token share?"

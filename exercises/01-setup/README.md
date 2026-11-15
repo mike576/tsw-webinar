@@ -1,4 +1,4 @@
-# Block 1 · Setup and your zero point (09:00–09:30)
+# Practice 1 · Setup and your zero point (09:35–10:05)
 
 1. `cd exercises/02-context && claude`
 2. `/model sonnet` (the exercises are sized for Sonnet 5.5 on a Pro plan)
