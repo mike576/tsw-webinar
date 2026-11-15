@@ -9,10 +9,14 @@ plus `message.model`, `message.id`, `requestId`, `timestamp`, `sessionId`.
 ## Do it with Claude Code, using what you learned this morning
 1. `cd exercises/04-meter && claude`, `/model sonnet`.
 2. Fill in `SPEC.md` (5 min, by hand or with Claude). Keep it short.
-3. Copy the hooks: `mkdir -p .claude && cp ../03-hooks/hook-configs/step2-guard-and-stop.json .claude/settings.local.json`
-4. Ask Claude to write `tests/test_meter.py` against `sample-logs/` first, then `meter.py`.
-   (Known facts about the sample logs are in `SPEC.md`.)
-5. Run it on your real logs: `python3 meter.py ~/.claude/projects`
+3. **Tests first, hooks off:** ask Claude to write `tests/test_meter.py` against `sample-logs/`,
+   using the known facts in `SPEC.md`. (They will fail: there is no `meter.py` yet.)
+4. **Now lock the tests:** `/exit`, then
+   `mkdir -p .claude && cp ../03-hooks/hook-configs/step2-guard-and-stop.json .claude/settings.local.json`
+   and start a new session.
+5. Ask: "Write meter.py per SPEC.md so the tests in tests/ pass." The guard keeps the tests
+   as you wrote them; the Stop hook keeps Claude working until they pass.
+6. Run it on your real logs: `python3 meter.py ~/.claude/projects`
 
 **Post one number in the chat: your own cache-read share.**
 
