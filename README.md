@@ -12,7 +12,7 @@ Everything here is plain Python 3 (standard library only) so it runs on any lapt
    subscription, or an Anthropic API key, all work.
 4. Clone this repo and check the meter runs:
    ```
-   git clone <repo-url> claude-code-like-a-pro
+   git clone https://github.com/mike576/tsw-webinar.git claude-code-like-a-pro
    cd claude-code-like-a-pro
    python3 tools/cc_meter.py --days --all
    ```
