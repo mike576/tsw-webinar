@@ -10,8 +10,10 @@ token use per turn, per session or per day. No account, no API key, no packages.
   python3 tools/cc_meter.py --days --all    # all your sessions, per day and model
   python3 tools/cc_meter.py --file x.jsonl  # one log file (e.g. the sample log)
 
-Columns: in = fresh input, cw = cache write, cr = cache read, out = output.
-"cache-read share" = cr / (in + cw + cr): how much of what was sent came from the cache.
+Columns: input = fresh input (not cached; ~2 per call is normal), cache_write = new input
+written to cache, cache_read = input read back from cache, output = output.
+"cache_read share" = cache_read / (input + cache_write + cache_read): how much of what
+was sent came from the cache.
 """
 
 from __future__ import annotations
@@ -106,8 +108,8 @@ def main() -> None:
         rows = [[str(i), r["t"][11:19], r["model"].replace("claude-", ""), *(k(r[f]) for f in FIELDS)]
                 for i, r in enumerate(turns, 1)]
         rows.append(["", "", "TOTAL", *sums(turns)[:4]])
-        table(["#", "time", "model", "in", "cw", "cr", "out"], rows)
-        print(f"\ncache-read share: {share(turns):.1%}")
+        table(["#", "time", "model", "input", "cache_write", "cache_read", "output"], rows)
+        print(f"\ncache_read share: {share(turns):.1%}")
         return
 
     all_turns = [t for f in files for t in read_turns(f)]
@@ -117,14 +119,14 @@ def main() -> None:
             by[t["session"]].append(t)
         rows = [[s[:8], min(r["t"] for r in ts)[:16].replace("T", " "), str(len(ts)), *sums(ts)]
                 for s, ts in sorted(by.items(), key=lambda kv: min(r["t"] for r in kv[1]))]
-        table(["session", "started", "calls", "in", "cw", "cr", "out", "cr share"], rows)
+        table(["session", "started", "calls", "input", "cache_write", "cache_read", "output", "cache_read share"], rows)
     else:
         by = defaultdict(list)
         for t in all_turns:
             by[(t["t"][:10], t["model"])].append(t)
         rows = [[d, m.replace("claude-", ""), str(len(ts)), *sums(ts)] for (d, m), ts in sorted(by.items())]
-        table(["day", "model", "calls", "in", "cw", "cr", "out", "cr share"], rows)
-    print(f"\nall: {len(all_turns)} API calls, cache-read share {share(all_turns):.1%}")
+        table(["day", "model", "calls", "input", "cache_write", "cache_read", "output", "cache_read share"], rows)
+    print(f"\nall: {len(all_turns)} API calls, cache_read share {share(all_turns):.1%}")
 
 
 if __name__ == "__main__":

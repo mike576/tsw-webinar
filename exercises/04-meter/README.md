@@ -18,6 +18,6 @@ plus `message.model`, `message.id`, `requestId`, `timestamp`, `sessionId`.
    as you wrote them; the Stop hook keeps Claude working until they pass.
 6. Run it on your real logs: `python3 meter.py ~/.claude/projects`
 
-**Post one number in the chat: your own cache-read share.**
+**Post one number in the chat: your own cache_read share.**
 
 Did not finish? `python3 ../../tools/cc_meter.py --days --all` is our version.

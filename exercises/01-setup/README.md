@@ -10,6 +10,6 @@
    ```
    python3 tools/cc_meter.py --sessions --all | tail -3
    ```
-   Find your session. Note `cw` (cache write) and `cr` (cache read).
+   Find your session. Note `cache_write` and `cache_read`.
 
 Post in the chat: your `/context` total from step 4.

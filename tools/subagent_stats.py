@@ -145,24 +145,24 @@ def report(main: Path) -> None:
     if not subs:
         print("  No subagents in this session.")
     hdr = f"  {'#':>2}  {'type':<16} {'description':<30} {'model':<14} {'time':>6} {'calls':>5} {'tools':>5} " \
-          f"{'input':>7} {'c.write':>8} {'c.read':>8} {'output':>7} {'cr%':>4}"
+          f"{'input':>7} {'cache_write':>11} {'cache_read':>10} {'output':>7} {'cache_read%':>11}"
     print(hdr)
     print("  " + "-" * (len(hdr) - 2))
     tot = dict(calls=0, tools=0, inp=0, cw=0, cr=0, out=0, secs=0.0)
     for n, (meta, s) in enumerate(subs, 1):
         print(f"  {n:>2}  {(meta.get('agentType') or '?')[:16]:<16} {(meta.get('description') or '')[:30]:<30} "
               f"{short_model(s['models'])[:14]:<14} {dur(s['secs']):>6} {s['calls']:>5} {s['tools']:>5} "
-              f"{k(s['inp']):>7} {k(s['cw']):>8} {k(s['cr']):>8} {k(s['out']):>7} {share(s):>4}")
+              f"{k(s['inp']):>7} {k(s['cw']):>11} {k(s['cr']):>10} {k(s['out']):>7} {share(s):>11}")
         for key in tot:
             tot[key] += s[key]
     if subs:
         print("  " + "-" * (len(hdr) - 2))
         print(f"  {'':>2}  {'ALL SUBAGENTS':<16} {'':<30} {'':<14} {dur(tot['secs']):>6} {tot['calls']:>5} "
-              f"{tot['tools']:>5} {k(tot['inp']):>7} {k(tot['cw']):>8} {k(tot['cr']):>8} {k(tot['out']):>7} "
-              f"{share(tot):>4}")
+              f"{tot['tools']:>5} {k(tot['inp']):>7} {k(tot['cw']):>11} {k(tot['cr']):>10} {k(tot['out']):>7} "
+              f"{share(tot):>11}")
     print(f"  {'':>2}  {'MAIN THREAD':<16} {'(you)':<30} {short_model(ms['models'])[:14]:<14} {dur(ms['secs']):>6} "
-          f"{ms['calls']:>5} {ms['tools']:>5} {k(ms['inp']):>7} {k(ms['cw']):>8} {k(ms['cr']):>8} "
-          f"{k(ms['out']):>7} {share(ms):>4}")
+          f"{ms['calls']:>5} {ms['tools']:>5} {k(ms['inp']):>7} {k(ms['cw']):>11} {k(ms['cr']):>10} "
+          f"{k(ms['out']):>7} {share(ms):>11}")
     if not subs:
         tok = ms["inp"] + ms["cw"] + ms["cr"] + ms["out"]
         print(f"\n  Tokens: {k(tok)}, all in the main thread.")

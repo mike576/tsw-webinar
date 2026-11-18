@@ -14,17 +14,17 @@ Start a fresh session here: `cd exercises/02-context && claude`, then `/model so
    - "How much of the input came from the cache?"
 5. In a second terminal, in the repo root: `python3 tools/cc_meter.py` won't find this session
    (it looks at the current folder), so run it from here: `python3 ../../tools/cc_meter.py`.
-   Look at `cr` (cache read) and `in` (fresh input) turn by turn.
+   Look at `cache_read` and `input` (fresh input) turn by turn.
 
 ## Part B: the experiment (Practice 2, 10:20)
 Half the room (odd seat number in Zoom) runs **`/compact`**, the other half presses **Esc Esc**
 and rewinds to before the last question. Then everyone asks:
 "Which model had the highest output-token share?"
 
-Run the meter again and post in the chat: **cw and cr of your last turn**.
+Run the meter again and post in the chat: **cache_write and cache_read of your last turn**.
 
 ## Part C: discuss (10 min)
-What is your cache-read share? Ours, over a month of daily work, is 97.7%.
+What is your cache_read share? Ours, over a month of daily work, is 97.7%.
 
 ## Stretch
 `TASK.md` is the full audit task from our model benchmark (12 numbers, graded by hidden tests).
