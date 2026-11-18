@@ -18,6 +18,9 @@ Everything here is plain Python 3 (standard library only) so it runs on any lapt
    ```
    You should see a table of your past Claude Code usage (or "No session logs" if you are new; that is fine).
 
+**Cloned before the workshop?** Run `git pull` in the repo folder first. Exercise
+`05-subagents`, the full column names of the meter and a hook fix were added on 18–19 Nov.
+
 ## What is in here
 
 | Folder | Practice | What you do |

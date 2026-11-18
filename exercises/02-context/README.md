@@ -12,16 +12,34 @@ Start a fresh session here: `cd exercises/02-context && claude`, then `/model so
    - "Which workspace spent the most?"
    - "Which day was the busiest?"
    - "How much of the input came from the cache?"
-5. In a second terminal, in the repo root: `python3 tools/cc_meter.py` won't find this session
-   (it looks at the current folder), so run it from here: `python3 ../../tools/cc_meter.py`.
-   Look at `cache_read` and `input` (fresh input) turn by turn.
+5. Open a **second terminal** and go to the same folder, then run the meter from there:
+   ```
+   cd claude-code-like-a-pro/exercises/02-context
+   python3 ../../tools/cc_meter.py
+   ```
+   (The meter shows the newest session of the folder you run it in, so run it from
+   `exercises/02-context`, not from the repo root.)
+   Look at `cache_read` and `cache_write` turn by turn: `cache_read` grows every turn,
+   `cache_write` stays small. `input` is always ~2 per call; that is normal, Claude Code caches everything.
 
 ## Part B: the experiment (Practice 2, 10:20)
-Half the room (odd seat number in Zoom) runs **`/compact`**, the other half presses **Esc Esc**
-and rewinds to before the last question. Then everyone asks:
-"Which model had the highest output-token share?"
+Stay in the **same** Claude Code session as Part A. Split the room by first name:
 
-Run the meter again and post in the chat: **cache_write and cache_read of your last turn**.
+- **First name A–M:** type **`/compact`** and wait until it is done.
+- **First name N–Z:** press **Esc twice** on an empty prompt. A list of your earlier messages
+  appears: pick the one **before your last question** and restore the conversation.
+
+Then everyone asks: **"Which model had the highest output-token share?"**
+
+Run the meter again in the second terminal (`python3 ../../tools/cc_meter.py`). Find the **first row
+after** your /compact or Esc Esc (the first call of the new question) and post in the chat:
+**/compact or Esc Esc, plus `cache_write` and `cache_read` of that row.**
+
+What to expect (our dry run, Sonnet 5.5):
+- **/compact:** `cache_read` drops (39k → 13k) and `cache_write` jumps (3k → 12k). The summary is a
+  prefix the cache has never seen, so it is written again at full weight.
+- **Esc Esc:** `cache_read` stays high and `cache_write` stays small. You jumped back to a prefix
+  that is already in the cache.
 
 ## Part C: discuss (10 min)
 What is your cache_read share? Ours, over a month of daily work, is 97.7%.
